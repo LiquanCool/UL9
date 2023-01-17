@@ -35,9 +35,17 @@ public class HorseBarn
      */
     public int findHorseSpace(String name)
     {
-        /* IMPLEMENT ME! */
-
-        return 0; // stub value to allow class to compile
+        for (int i = 0;i<spaces.length;i++)
+        {
+            if (spaces[i]==null)
+            {
+            }
+            else if (spaces[i].getName().equals(name))
+            {
+                return i;
+            }
+        }
+        return -1; // stub value to allow class to compile
     }
 
     /** Consolidates the barn by moving horses so that the horses are in adjacent
@@ -47,7 +55,20 @@ public class HorseBarn
      */
     public void consolidate()
     {
-        /* IMPLEMENT ME! */
+        boolean done = false;
+        while(!done)
+        {
+            done = true;
+            for (int i = 1; i < spaces.length; i++)
+            {
+                if (!(spaces[i]==null) && spaces[i - 1]==null)
+                {
+                    spaces[i - 1] = spaces[i];
+                    spaces[i] = null;
+                    done = false;
+                }
+            }
+        }
     }
 
     /** Returns a string that can be printed, showing which horses are in which spaces
